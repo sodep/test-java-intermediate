@@ -77,7 +77,7 @@ El sistema debe modelar y comportarse según las siguientes especificaciones:
 
 3. Se debe utilizar un PreparedStatement para setear el valor usado como filtro del query. No vale concatenar todo en un string.
 
-Se provee en este repositorio un script [potlucktable.sql](../blob/master/src/main/resources/db/migration/potlucktable.sql) para la creación de la tabla sobre la que se debe hacer este ejercicio. El script es compatible con PostgreSQL.
+Se provee en este repositorio un script [potlucktable.sql](blob/master/src/main/resources/db/migration/potlucktable.sql) para la creación de la tabla sobre la que se debe hacer este ejercicio. El script es compatible con PostgreSQL.
     
 
 Criterios de evaluación
