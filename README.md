@@ -15,15 +15,15 @@ Descripción de la Evaluación
 Se proveen dos ejercicios de distinta dificultad. Leer antentamente lo que se pide en cada ejercicio y empezar por el que sea más sencillo.
 
 
-1. Manejador de tareas
-----------------------
+Ejercicio 1 - Manejador de tareas
+---------------------------------
 
 Esta aplicación es para un manejador de tareas. 
 
 La intención de la aplicación es la de proveer un CRUD de tareas que son manejadas desde una base de datos relacional. 
 
 
-## Tareas de Backend
+### Tareas de Backend
 
 Agregar un servicio REST para consultar, agregar, actualizar y borrar tareas. El servicio debe responder a las siguientes URLs:
 
@@ -46,22 +46,22 @@ Agregar un servicio REST para consultar, agregar, actualizar y borrar tareas. El
 *   El servicio que permite listar tareas también se debe de poder mostrar sus asignados. Es decir, debe haber una relación entre tareas y asignados y el servicio de listado debe reflejar esto.     
 
 
-## Tareas de Test Unitarios
+### Tareas de Test Unitarios
 
 Escribir un test unitario que verifique el siguiente **requerimiento funcional** mencionado arriba:
 
 >> No se debe de poder asignar a una persona más de 5 tareas (para evitarle la fatiga :-)). La aplicación debe
 lanzar un error en caso de que se quiera asignar más de 5 tareas a una persona. 
 
-## Guías generales
+### Guías generales
 
 Las URLs para los servicios REST deben tener el verbo HTTP apropiado para cada operación.
 
 Los servicios deben aceptar y responder en formato JSON. Diseñar el esquema JSON que se crea apropiado dado la estructura de datos proporcionada.
  
 
-2. Ejercicio de query a base de datos con JDBC
-----------------------------------------------
+Ejercicio 2 - Ejercicio de query a base de datos con JDBC
+---------------------------------------------------------
 
 Conectarse a una base de datos por JDBC, hacer una consulta mediante un PreparedStatement e imprimir en consola los resultados de la consulta.
 
