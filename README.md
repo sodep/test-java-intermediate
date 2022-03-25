@@ -112,11 +112,13 @@ Criterios de evaluación
 Pasos iniciales
 ---------------
 
-### Clonar el proyecto a tu máquina
+### Empezando a trabajar
 
-Probablmente estas leyendo esto en Github. Si no, puedes encontrar el proyecto [en GitHub](https://www.github.com/rodrigojv/test-java-intermediate).
+Para empezar crear un fork de este repositorio para implementar los ejercicios.
 
-Para empezar a trabajar, empieza por clonar el repositorio en tu máquina. Haz tu trabajo localmente y haz un commit de tus cambios a tu repositorio local git a medida que vayas avanzando.
+Adjuntar cualquier documentación al proyecto en forma de archivos con extensión `.md`.
+
+Se recomienda ir haciendo commits a medida que se avanza con la solución. Agrupando estos commits si corresponde hacerlo.
 
 
 ### Contruyendo el proyecto
@@ -132,10 +134,6 @@ Se provee en la carpeta `src/main/resources/db/migration` scripts de creación d
 Enviando tu código para evaluación
 ------------------------------------
 
-Cuando termines y estes listo para enviar tu enviar tu trabajo, haz un commit de tus cambios y utiliza el siguiente comando para generar una serie de archivos `patch` con todos tus cambios.
+Luego al finalizar enviar un email con el link al fork a la persona que te envió este test.
 
-    git format-patch origin/master
-
-Esto va a crear uno o más archivos con extensión `.patch`.
-
-Envia un email con los archivos patch a la persona que te envió este test.
+¡Buena suerte! 🎉
