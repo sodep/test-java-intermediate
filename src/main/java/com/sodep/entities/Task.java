@@ -1,12 +1,10 @@
 package com.sodep.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "tasks")
@@ -23,7 +21,7 @@ public final class Task implements Serializable {
 
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "assigned_to")
     private Assignee assignee;
 

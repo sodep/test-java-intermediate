@@ -7,9 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-
 
 
 @RestController
@@ -19,16 +17,16 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     private ResponseEntity<?> listTasks() {
         List<Task> tasks = taskService.listAll();
         if (tasks.isEmpty()) {
-            return new ResponseEntity<>(new ArrayList<>(), HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     private ResponseEntity<?> findTaskById(@PathVariable("id") Long id) {
         Task task = taskService.findById(id);
         if (task == null) {
@@ -37,9 +35,13 @@ public class TaskController {
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+    @PostMapping(consumes = "application/json")
     private ResponseEntity<?> createTask(@RequestBody Task task) {
-        taskService.createTask(task);
-        return new ResponseEntity<>(task, HttpStatus.CREATED);
+        boolean created = taskService.createTask(task);
+        if (created) {
+            return new ResponseEntity<>(task, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>("Can't create more than five task for person", HttpStatus.BAD_REQUEST);
+        }
     }
 }

@@ -27,20 +27,23 @@ public class TaskService {
     }
 
     public boolean createTask(Task task) {
-        boolean created = true;
-        System.out.println(task.getAssignee().getTasks().size() );
-        if (task.getAssignee().getTasks().size() <= 5){
-            System.out.println("*********************** puede insertar task");
-            taskRepository.save(task);
-//            Assignee newAssignee = assigneeRepository.findById(task.getAssignee().getId());
-//            newAssignee.getTasks().add(task);
-//            assigneeRepository.save(newAssignee);
-        }else{
-            System.out.println("*********************** no puede insertar task");
-            created = false;
-            throw new RuntimeException("No puede guardar mas de 5 tareas a un usuario");
+        boolean create = true;
+        Assignee assignee = assigneeRepository.findById(task.getAssignee().getId());
+        int taskSizeCount = assignee.getTasks().size();
+        System.out.println("task size on assignee with id " + assignee.getId() + " = " + taskSizeCount);
+        System.out.println(taskSizeCount);
+        if (taskSizeCount < 5) {
+            System.out.println("can create task");
+        } else {
+            System.out.println("can not create task");
+            create = false;
         }
-        return created;
+        if (create) {
+            assignee.getTasks().add(task);
+            assigneeRepository.save(assignee);
+            taskRepository.save(task);
+        }
+        return create;
     }
 
     public void createTasks(List<Task> tasksList) {

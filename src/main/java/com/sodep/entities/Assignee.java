@@ -28,7 +28,7 @@ public final class Assignee implements Serializable {
     private String email;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdAt;
-    @OneToMany(mappedBy = "assignee")
+    @OneToMany(mappedBy = "assignee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Task> tasks = new ArrayList<>();
 
