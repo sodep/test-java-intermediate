@@ -44,4 +44,8 @@ public class TaskController {
             return new ResponseEntity<>("Can't create more than five task for person", HttpStatus.BAD_REQUEST);
         }
     }
+
+    public String hiTest(String name) {
+        return String.format("HI %s", name);
+    }
 }
