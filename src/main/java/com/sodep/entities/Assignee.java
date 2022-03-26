@@ -1,28 +1,46 @@
 package com.sodep.entities;
 
-import java.io.Serializable;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.BatchSize;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "assignees")
 public final class Assignee implements Serializable {
-   
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue
-	private Long id;
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String email;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdAt;
+    @OneToMany(mappedBy = "assignee")
+    @JsonIgnore
+    private List<Task> tasks = new ArrayList<>();
+
+    public Assignee() {
+    }
+
+    public Assignee(Long id, String name, String email, Date createdAt) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.createdAt = createdAt;
+    }
 
     public Long getId() {
         return id;
@@ -54,5 +72,13 @@ public final class Assignee implements Serializable {
 
     public void setCreatedAt(final Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }

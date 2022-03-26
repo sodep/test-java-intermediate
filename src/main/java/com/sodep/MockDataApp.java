@@ -16,7 +16,8 @@ import java.util.Date;
 import java.util.List;
 
 @Component
-public class CommandLineAppStartupRunner implements CommandLineRunner {
+public class MockDataApp implements CommandLineRunner {
+
     @Autowired
     private TaskService taskService;
 
@@ -38,8 +39,6 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         assigneeService.createAssignee(a1);
         assigneeService.createAssignee(a2);
         assigneeService.createAssignee(a3);
-
-
 
         Task t1 = new Task(1l, "Implement REST service for task list", a1, Date.from(due1.atZone(ZoneId.systemDefault()).toInstant()),
                 Date.from(Instant.now()), Date.from(Instant.now()) );

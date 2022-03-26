@@ -1,47 +1,64 @@
 package com.sodep.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="tasks")
+@Table(name = "tasks")
 public final class Task implements Serializable {
-    
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue
-	private Long id;
-    
-	private String description;
-    
-	private Assignee assignee;
-    
+
     /**
-     The date where the task
-     should be completed.
-    */
-	private Date due;
-    
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "assigned_to")
+    private Assignee assignee;
+
     /**
-      The date where the task
-      was completed.
-    */
-	private Date completedAt;
-    
+     * The date where the task
+     * should be completed.
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date due;
+
     /**
-      The date where the task
-      was created.
-    */
-	private Date createdAt;
+     * The date where the task
+     * was completed.
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date completedAt;
+
+    /**
+     * The date where the task
+     * was created.
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createdAt;
+
+    public Task() {
+    }
+
+    public Task(Long id, String description, Assignee assignee, Date due, Date completedAt, Date createdAt) {
+        this.id = id;
+        this.description = description;
+        this.assignee = assignee;
+        this.due = due;
+        this.completedAt = completedAt;
+        this.createdAt = createdAt;
+    }
 
     public Long getId() {
         return id;
